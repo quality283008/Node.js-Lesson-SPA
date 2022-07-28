@@ -42,7 +42,7 @@ export default new Vuex.Store({
     },
     getUserList(state, payload) {
       state.userList = payload;
-    }
+    },
   },
   actions: {
     async updateLoginUser({ commit }, param) {
@@ -102,7 +102,7 @@ export default new Vuex.Store({
     },
     async addTodo({ dispatch }, todo) {
       await axios
-        .post(`${BASE_URL}/todo`, todo)
+        .post(`${BASE_URL}/todo`, todo);
       dispatch('updateTodoList');
     },
     async deleteTodo({ dispatch }, id) {

@@ -2,7 +2,7 @@
   <div>
     <my-navi />
     <template>
-      <my-add-todo-form 
+      <my-add-todo-form
         @addTodoList="addTodoList"
       />
     </template>

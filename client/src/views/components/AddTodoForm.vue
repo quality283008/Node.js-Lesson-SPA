@@ -30,7 +30,7 @@ export default {
       todoContent: {
         title: '',
         content: '',
-      }
+      },
     };
   },
   methods: {
@@ -40,7 +40,7 @@ export default {
       this.todoContent.content = '';
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

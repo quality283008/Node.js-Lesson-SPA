@@ -1,5 +1,5 @@
 <template>
-  <my-login-form 
+  <my-login-form
     @login="login"
   />
 </template>
