@@ -35,9 +35,9 @@ export default {
   },
   methods: {
     handleClick() {
+      this.$emit('addTodoList', this.todoContent);
       this.todoContent.title = '';
       this.todoContent.content = '';
-      this.$emit('addTodoList', this.todoContent);
     },
   },
 }
