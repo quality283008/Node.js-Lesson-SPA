@@ -35,7 +35,11 @@ export default {
   },
   methods: {
     handleClick() {
-      this.$emit('addTodoList', this.todoContent);
+      const param = {
+        title: this.todoContent.title,
+        content: this.todoContent.content,
+      }
+      this.$emit('addTodoList', param);
       this.todoContent.title = '';
       this.todoContent.content = '';
     },
