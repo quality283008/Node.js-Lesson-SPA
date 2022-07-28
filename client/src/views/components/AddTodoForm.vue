@@ -1,10 +1,11 @@
 <template>
-  <form class="register" @submit.prevent>
+  <form class="register" @submit.prevent="handleClick">
     <div class="register-input">
       <p class="register-input-title">タイトル</p>
       <input
         type="text"
         name="title"
+        v-model="todoContent.title"
         autocomplete="off"
         placeholder="Todoのタイトルを入力してね。">
     </div>
@@ -12,6 +13,7 @@
       <p class="register-input-title">内容</p>
       <textarea
         name="content"
+        v-model="todoContent.content"
         rows="3"
         placeholder="Todoの内容を入力してね。"></textarea>
     </div>
@@ -20,6 +22,26 @@
     </div>
   </form>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      todoContent: {
+        title: '',
+        content: '',
+      }
+    };
+  },
+  methods: {
+    handleClick() {
+      this.todoContent.title = '';
+      this.todoContent.content = '';
+      this.$emit('addTodoList', this.todoContent);
+    },
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 .register {

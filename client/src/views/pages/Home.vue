@@ -2,7 +2,9 @@
   <div>
     <my-navi />
     <template>
-      <my-add-todo-form />
+      <my-add-todo-form 
+        @addTodoList="addTodoList"
+      />
     </template>
     <template>
       <div class="list-status">
@@ -18,6 +20,7 @@
           :todo="todo"
           @update-completed="updateTodo(todo)"
           @update-todo="updateTodo(todo)"
+          @deleteTodo="deleteTodo(todo)"
         />
       </ul>
     </template>
@@ -47,6 +50,12 @@ export default {
     ...mapActions({
       getTodoList: 'updateTodoList',
     }),
+    addTodoList(todo) {
+      this.$store.dispatch('addTodo', todo);
+    },
+    deleteTodo(todo) {
+      this.$store.dispatch('deleteTodo', todo.id);
+    },
   },
   computed: {
     ...mapGetters([
