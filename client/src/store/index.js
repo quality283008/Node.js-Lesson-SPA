@@ -14,6 +14,7 @@ export default new Vuex.Store({
     },
     isAuthenticated: false,
     todoList: [],
+    userList: [],
   },
   getters: {
     loginUser: (state) => state.loginUser,
@@ -39,6 +40,9 @@ export default new Vuex.Store({
     updateTodoList(state, todoList) {
       state.todoList = todoList;
     },
+    getUserList(state, payload) {
+      state.userList = payload;
+    }
   },
   actions: {
     async updateLoginUser({ commit }, param) {
@@ -72,6 +76,15 @@ export default new Vuex.Store({
       } else {
         commit('resetLoginUser');
         commit('updateIsAuthenticated', false);
+      }
+    },
+    async getUserList({ commit }) {
+      const res = await axios
+        .get(`${BASE_URL}/user/all`)
+        .then((resp) => resp)
+        .catch((err) => err.response);
+      if (res.status === 200) {
+        commit('getUserList', res.data);
       }
     },
     async updateTodoList({ commit }) {

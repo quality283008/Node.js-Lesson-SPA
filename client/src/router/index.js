@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Login from '@/pages/Login.vue';
 import Home from '@/pages/Home.vue';
 import User from '@/pages/User.vue';
+import All from '@/pages/All.vue';
 import UserHome from '@/components/UserHome.vue';
 import store from '../store';
 
@@ -36,6 +37,11 @@ const routes = [
         component: UserHome,
       },
     ],
+  },
+  {
+    path: '/all',
+    name: 'all',
+    component: All,
   },
 ];
 
