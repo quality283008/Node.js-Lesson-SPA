@@ -25,12 +25,12 @@ export default {
     this.getUserList();
   },
   methods: {
-    ...mapActions([
+    ...mapActions('user', [
       'getUserList',
     ]),
   },
   computed: {
-    ...mapState([
+    ...mapState('user', [
       'userList',
     ]),
   },

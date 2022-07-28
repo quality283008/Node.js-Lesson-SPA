@@ -44,21 +44,21 @@ export default {
     this.getTodoList();
   },
   methods: {
-    ...mapActions([
+    ...mapActions('todo', [
       'updateTodo',
     ]),
-    ...mapActions({
+    ...mapActions('todo', {
       getTodoList: 'updateTodoList',
     }),
     addTodoList(todo) {
-      this.$store.dispatch('addTodo', todo);
+      this.$store.dispatch('todo/addTodo', todo);
     },
     deleteTodo(todo) {
-      this.$store.dispatch('deleteTodo', todo.id);
+      this.$store.dispatch('todo/deleteTodo', todo.id);
     },
   },
   computed: {
-    ...mapGetters([
+    ...mapGetters('todo', [
       'todoList',
       'todoLength',
       'completedTodosLength',
