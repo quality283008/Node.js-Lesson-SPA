@@ -2,12 +2,14 @@
   <div>
     <my-navi />
     <template>
-      <my-add-todo-form />
+      <my-add-todo-form
+        @addTodoList="addTodoList"
+      />
     </template>
     <template>
       <div class="list-status">
-        <p>総件数: </p>
-        <p>完了済み: </p>
+        <p>総件数: {{ todoLength }} </p>
+        <p>完了済み: {{ completedTodosLength }}</p>
       </div>
     </template>
     <template>
@@ -18,6 +20,7 @@
           :todo="todo"
           @update-completed="updateTodo(todo)"
           @update-todo="updateTodo(todo)"
+          @deleteTodo="deleteTodo(todo)"
         />
       </ul>
     </template>
@@ -41,16 +44,24 @@ export default {
     this.getTodoList();
   },
   methods: {
-    ...mapActions([
+    ...mapActions('todo', [
       'updateTodo',
     ]),
-    ...mapActions({
+    ...mapActions('todo', {
       getTodoList: 'updateTodoList',
     }),
+    addTodoList(todo) {
+      this.$store.dispatch('todo/addTodo', todo);
+    },
+    deleteTodo(todo) {
+      this.$store.dispatch('todo/deleteTodo', todo.id);
+    },
   },
   computed: {
-    ...mapGetters([
+    ...mapGetters('todo', [
       'todoList',
+      'todoLength',
+      'completedTodosLength',
     ]),
   },
 };
